@@ -1,0 +1,52 @@
+# DO NOT CHANGE THIS LINE:
+version: "2"
+
+# Can be: LuckPerms or Vanilla.
+permission-manager: "LuckPerms"
+
+features:
+  seats: true
+
+players:
+  default-tag:
+    - "newbie"
+  tell-new: true
+  update-names: true
+  points:
+    default: 0
+
+commands:
+  stats:
+    base: "stats"
+    permission: "taco.command.stats.self"
+    aliases:
+      - "st"
+      - "stat"
+    others: "taco.command.stats.others"
+  stag:
+    base: "stag"
+    permission: "taco.command.tag.self"
+    aliases:
+      - "stattag"
+      - "statstag"
+      - "sttag"
+      - "stt"
+    others: "taco.command.tag.others"
+  fly:
+    base: "fly"
+    permission: "taco.command.fly.self"
+    aliases: []
+    others: "taco.command.fly.others"
+  glow:
+    base: "glow"
+    permission: "taco.command.glow.self"
+    aliases: []
+    others: "taco.command.fly.others"
+  nick:
+    base: "nick"
+    permission: "taco.command.nick.self"
+    aliases: []
+    others: "taco.command.nick.others"
+
+chat:
+  kick-illegal-chars: true

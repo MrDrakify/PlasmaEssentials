@@ -1,0 +1,51 @@
+# DO NOT CHANGE THIS LINE:
+version: "1"
+
+join: "&e[ &d%player% &aconnected&8. &e]"
+leave: "&e[ &d%player% &cdisconnected&8. &e]"
+chat: "&d%player% &7>> &f%message%"
+
+error: "&cThere was an error..."
+no-player: "&cThe player you are looking for doesn't exist or isn't online..."
+no-perm: "&cYou do not have enough permissions to do this..."
+only-players: "&cThis command can be executed only by players!"
+needs-more: "&cNeeds more arguments!"
+needs-less: "&cNeeds less arguments!"
+
+players:
+  offline: "&d%player% &e(&cOFF&e)"
+  online: "&d%player% &e(&aON&e)"
+
+stats:
+  no-stat: "&cCouldn't find the stat..."
+  no-permission: "&cSorry, but you do not have permission for that."
+  create: "&aJust created a stats profile for you! You can view it by doing &b/stats"
+  info: "&9----- &d%player% &4Info &9-----%newline%&eEXP&8: &6%xp%%newline%&eLevel&8: &6%level%%newline%&eXP Needed&8: &6%xplevel% &9(&6%xpneeded%&9)%newline%&ePlaytime&8: &6%playtime% &ehours"
+
+toggle:
+  enable: "&a&lenabled&r"
+  disable: "&c&ldisabled&r"
+
+fly:
+  self: "&eJust %toggle% &eyour fly!"
+  others: "&eJust %toggle% &d%player%&e's fly!"
+
+glow:
+  self: "&eJust %toggle% &eyour glow!"
+  others: "&eJust %toggle% &d%player%&e's glow!"
+
+btag:
+  # Fillers:
+  # %player% = player whose tags are being changed.
+  # %tag% = tag being changed.
+  remove: "&eRemoved &6%tag% &eoff of &d%player%&e."
+  add: "&eAdded &6%tag% &eto &d%player%&e."
+  list:
+    main: "&d%player%&e's tags: %tags%"
+    tags:
+      last: "&6%tag%"
+      not-last: "&6%tag%&e,"
+
+nick:
+  self: "&eJust nicked yourself as &r%nick%&e!"
+  others: "&eJust nicked &d%player% &eas &r%nick%&e!"

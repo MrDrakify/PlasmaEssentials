@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.plasmere.plasmaessentials.events.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinPlayerManager",
+    "MixinServerPlayNetworkHandler"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

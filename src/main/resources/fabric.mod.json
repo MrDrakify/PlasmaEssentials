@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "plasmaessentials",
+  "version": "${version}",
+  "name": "PlasmaEssentials",
+  "description": "Essentials for Fabric servers. Made for Plasmere.",
+  "authors": [
+    "Nitrate"
+  ],
+  "contact": {
+    "website": "https://vote.plasmere.net",
+    "repo": "https://github.com/PlasmereNetwork/PlasmaEssentials.git"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.plasmere.plasmaessentials.PlasmaEssentials"
+    ]
+  },
+  "mixins": [
+    "PlasmaEssentials.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "luckperms": ">=5.3"
+  }
+}
