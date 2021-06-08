@@ -277,23 +277,42 @@ public class StringUtils {
 
             int i = 0;
             boolean find = false;
+            TreeMap<Integer, String> founds = new TreeMap<>();
 
             while (matcher.find()) {
                 find = true;
                 found = matcher.group(0);
-                String colorHex = found.substring(1, found.indexOf('>'));
-                String[] split = textLeft.split(Pattern.quote(found));
 
-                if (i == 0) {
-                    mt.append(codedString(split[0]));
-                }
-
-                //BaseComponent[] bc = new ComponentBuilder(split[1]).color(ChatColor.of(Color.decode(colorHex))).create();
-                mt.append(new LiteralText(split[1]).styled(style -> style.withColor(Integer.decode(colorHex))));
+                founds.put(i, found);
 
                 i ++;
             }
             if (! find) return new LiteralText(text);
+
+            TreeMap<Integer, String> pieces = new TreeMap<>();
+            int iter = 0;
+            int from = 0;
+            for (Integer key : founds.keySet()) {
+                int at = text.indexOf(founds.get(key), from);
+                pieces.put(iter, text.substring(at));
+                from = at;
+                iter ++;
+            }
+
+            mt = new LiteralText(pieces.get(0));
+
+            for (Integer key : pieces.keySet()) {
+                if (key == 0) continue;
+
+                String p = pieces.get(key);
+                String f = p.substring(0, "<#123456>".length());
+
+                String colorHex = f.substring(1, f.indexOf('>'));
+                String after = p.substring(f.length());
+
+                //BaseComponent[] bc = new ComponentBuilder(split[1]).color(ChatColor.of(Color.decode(colorHex))).create();
+                mt.append(new LiteralText(after).styled(style -> style.withColor(Integer.decode(colorHex))));
+            }
 
             return mt;
         } catch (Exception e) {

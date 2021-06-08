@@ -47,8 +47,8 @@ public class MixinServerPlayNetworkHandler {
             )
     )
     private void onChat(ChatMessageC2SPacket chatMessageC2SPacket, CallbackInfo ci){
-        if (PlasmaEssentials.getInstance().getEvents().onChat(PlayerUtils.getOrCreate(this.player.getUuid()), chatMessageC2SPacket, true)) {
-            ci.cancel();
-        }
+//        if (PlasmaEssentials.getInstance().getEvents().onChat(PlayerUtils.getOrCreate(this.player.getUuid()), chatMessageC2SPacket, true)) {
+//            ci.cancel();
+//        }
     }
 }

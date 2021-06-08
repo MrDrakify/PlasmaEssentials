@@ -32,6 +32,7 @@ public class OneSecondTimer implements Runnable {
         if (PlasmaEssentials.lpHolder.enabled && ConfigUtils.updateNames) {
             for (Player player : PlayerUtils.getStats()) {
                 PlayerUtils.updateDisplayName(player);
+                PlayerUtils.updateGroup(player);
             }
         }
 
@@ -80,13 +81,15 @@ public class OneSecondTimer implements Runnable {
                 }
                 if (found) continue;
 
-                PlayerUtils.addStat(new Player(playerEntity));
+                if (PlayerUtils.exists(playerEntity.getUuid())) {
+                    PlayerUtils.addStat(new Player(playerEntity, false));
+                } else {
+                    PlayerUtils.addStat(new Player(playerEntity));
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        // PlasmaEssentials.getInstance().getLogger().info("1 second passed.");
     }
 }
 

@@ -17,7 +17,7 @@ import java.util.*;
 
 public class Player {
     private TreeMap<String, String> info = new TreeMap<>();
-    private final String filePrePath = PlasmaEssentials.getInstance().getPlDir().getPath();
+    private final File folder = PlasmaEssentials.getInstance().getPlDir();
 
     public ServerPlayerEntity player;
 
@@ -130,7 +130,7 @@ public class Player {
 
         this.uuid = uuid;
 
-        this.file = new File(filePrePath + uuid + ".properties");
+        this.file = new File(folder, uuid + ".properties");
 
         if (createNew) {
             try {

@@ -36,7 +36,7 @@ public class Events {
 //            return cancel;
 //        }
 
-        PlasmaEssentials.getInstance().getLogger().info(MessageConfUtils.join.replace("%player%", player.getDisplayName().asString()));
+        PlasmaEssentials.getInstance().getLogger().info(MessageConfUtils.join.replace("%player%", PlayerUtils.getOffOnDisplay(PlayerUtils.getOrCreate(player.getUuid()))));
 
 //        MessagingUtils.sendAllIncluding(player, MessageConfUtils.join.replace("%player%", PlayerUtils.getOffOnDisplay(stat)), false);
 //        PlasmaEssentials.getInstance().getLogger().info(MessageConfUtils.join.replace("%player%", PlayerUtils.getOffOnDisplay(stat)));

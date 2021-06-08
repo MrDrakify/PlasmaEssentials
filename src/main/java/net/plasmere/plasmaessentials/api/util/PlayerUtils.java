@@ -12,6 +12,7 @@ import net.luckperms.api.node.types.PermissionNode;
 import net.luckperms.api.node.types.PrefixNode;
 import net.luckperms.api.node.types.SuffixNode;
 import net.minecraft.command.CommandSource;
+import net.minecraft.scoreboard.AbstractTeam;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.plasmere.plasmaessentials.PlasmaEssentials;
@@ -276,6 +277,27 @@ public class PlayerUtils {
         }
     }
 
+    public static void updateGroup(Player player){
+        AbstractTeam team = player.player.getScoreboardTeam();
+
+        if (team == null) return;
+
+        User user = api.getUserManager().getUser(player.uuid);
+
+        if (user == null) return;
+
+        Group group = api.getGroupManager().getGroup(user.getPrimaryGroup());
+
+        if (group == null) {
+            user.setPrimaryGroup(team.getName());
+            return;
+        }
+
+        if (! group.getName().equals(team.getName().toLowerCase(Locale.ROOT))) {
+            user.setPrimaryGroup(team.getName());
+        }
+    }
+
     public static void updateDisplayName(Player player){
         if (! ConfigUtils.updateNames) return;
         if (! PlasmaEssentials.lpHolder.enabled) return;
@@ -314,7 +336,7 @@ public class PlayerUtils {
         if (prefix == null) prefix = "";
         if (suffix == null) suffix = "";
 
-        player.updateKey("displayname", StringUtils.codedString(prefix + player.latestName + suffix));
+        player.updateKey("display-name", StringUtils.codedString(prefix + player.latestName + suffix));
     }
 
     public static int getCeilingInt(Set<Integer> ints){
@@ -401,7 +423,7 @@ public class PlayerUtils {
     }
 
     public static void setNick(Player stat, ServerCommandSource source, String newNick){
-        stat.updateKey("displayname", StringUtils.codedString(newNick));
+        stat.updateKey("display-name", StringUtils.codedString(newNick));
 
         if (stat.latestName.equals(source.getName())) {
             MessagingUtils.sendStatUserMessage(stat, source, MessageConfUtils.cNickSelf.replace("%nick%", stat.displayName), false);

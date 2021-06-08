@@ -31,7 +31,15 @@ public class FlyCommand extends ComplexCommand {
                 .then(argument("target", EntityArgumentType.player())
                         .suggests((context, builder) -> suggestMatching(context.getSource().getMinecraftServer().getPlayerNames(), builder))
                         .requires(Permissions.require(this.otherPermission, false))
-                        .executes(context -> execute(context, getPlayer(context, "target")))
+                        .executes(context -> {
+                            try {
+                                return execute(context, EntityArgumentType.getPlayer(context, "target"));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            return FAILED;
+                        })
                 );
 
         commandNode = dispatcher.register(literalArgumentBuilder);
